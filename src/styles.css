@@ -1,4 +1,71 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.current-formula {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.formula-results {
+  margin-top: 20px;
+}
+
+.formula-display {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.formula-text {
+  font-family: monospace;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.parse-tree {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.parse-tree pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+.errors {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff5f5;
+  border-radius: 4px;
+  border: 1px solid #feb2b2;
+}
+
+.error-item {
+  color: #c53030;
+  margin: 5px 0;
+}
+
+hr {
+  margin: 30px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+h1, h2, h3 {
+  color: #2d3748;
+}
+
+.formula-editor {
+  margin: 10px 0;
 }
