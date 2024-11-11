@@ -5,7 +5,7 @@ import antlr4 from "antlr4";
 import LME4Lexer from "./LME4Lexer";
 import LME4Parser from "./LME4Parser";
 
-class ErrorListener extends antlr4.error.ErrorListener {
+class Lme4ErrorListener extends antlr4.error.ErrorListener {
   constructor() {
     super();
     this.errors = [];
@@ -32,7 +32,9 @@ function parseFormula(formula: string): antlr4.ParserRuleContext {
   const parser = new LME4Parser(tokenStream);
 
   parser.removeErrorListeners();
-  const errorListener = new ErrorListener();
+  lexer.removeErrorListeners();
+  const errorListener = new Lme4ErrorListener();
+  lexer.addErrorListener(errorListener);
   parser.addErrorListener(errorListener);
   // Parse the formula starting from the 'formula' rule
   const tree = parser.formula();

@@ -2,6 +2,7 @@ import "./styles.css";
 const { parseFormula } = require("./lme4/parser");
 import { lme4_examples } from "./lme4/test";
 import ExampleGrid from "./ExampleGrid";
+import FormulaEditor from "./FormulaEditor";
 
 const formula = "~salmonella_enterica + (1|subject_id )";
 const [parseTree, errors] = parseFormula(formula);
@@ -26,6 +27,9 @@ export default function App() {
         Formula: <span>{formula}</span>
         <div>{parseTree.toStringTree()}</div>
         <div>{errors}</div>
+        <hr />
+        <div>Formula Editor</div>
+        <FormulaEditor />
         <hr />
         <div>Examples</div>
         <ExampleGrid examples={cardsData} />
