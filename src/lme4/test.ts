@@ -24,6 +24,28 @@ const lme4_examples = [
   "(1 | g1)+(1 | g1:g2)",
   "0 + offset(o) + (1 | g)",
   "x + (x || g)",
+  "a+b", //(fixed) main effects of a and b (and no interaction)
+  "a:b", // only interaction of a and b (and no main effects)
+  "a*b", //main effects and interaction of a and b (expands to: a + b + a:b)
+  "a + b + a:b",
+  "(a+b+c)^2",//main effects and two-way interactions, but no three-way interaction (expands to: a + b + c + a:b + b:c + a:c)
+  "a + b + c + a:b + b:c + a:c",
+  "(a+b)*c", //all main effects and pairwise interactions between c and a or b (expands to: a + b + c + a:c + b:c)
+  "a + b + c + a:c + b:c",
+  "0 + a", //0 suppresses the intercept resulting in a model that has one parameter per level of a (identical to: a - 1)
+  "a - 1", // random intercepts for each unique level of s and for each unique level of i
+  "(1|s)", //random intercepts for unique level of the factor s
+  "(1|s) + (1|i)",  
+  "(1|s/i)",/*random intercepts for factor s and i, 
+            where the random effects for i are nested in s. */
+  "(1|s) + (1|s:i)",// expands to this, example: `s` refer to schools, and i to classrooms within
+  "(a|s)",//random intercepts and random slopes for a, for each level of s
+  "(a*b|s)", // expanded (a|s)
+  "(0+a|s)", //random slopes for a for each level of s, but no random intercepts
+  "(a||s)", /* random intercepts and random slopes for a, 
+            for each level of s, but no correlations between the 
+            random effects (i.e. they are set to 0). */
+  "(0+a|s) + (1|s)" //This expands to: (0+a|s) + (1|s))
 ];
 
 export { lme4_examples };
