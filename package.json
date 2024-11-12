@@ -22,11 +22,12 @@
     "@types/lodash": "^4.17.13",
     "@types/react": "18.2.38",
     "@types/react-dom": "18.2.15",
-    "@typescript-eslint/parser": "^5.62.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.12.0",
-    "typescript": "4.4.4",
+    "typescript": "^4.9.5",
     "typescript-eslint": "^8.14.0"
   },
   "scripts": {
