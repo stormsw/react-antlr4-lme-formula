@@ -9,10 +9,10 @@ const lme4_examples = [
   "~salmonella_enterica + days_of_life + salmonella_enterica:days_of_life",
   "~salmonella_enterica + days_of_life + salmonella_enterica:days_of_life + (1|subject_id)",
   "~group(salmonella_enterica)",
-  "~group(salmonella_enterica) + days_of_life ",
+  "~group(salmonella_enterica) + days_of_life",
   "~group(salmonella_enterica) + days_of_life + (1|subject_id)",
   "~ordered(salmonella_enterica)",
-  "~ordered(salmonella_enterica) + days_of_life ",
+  "~ordered(salmonella_enterica) + days_of_life",
   "~ordered(salmonella_enterica) + days_of_life + (1|subject_id)",
   "~strata(salmonella_enterica)",
   "darknes ~ 1 + (1 | jedi_id)",
@@ -33,9 +33,9 @@ const lme4_examples = [
   "(a+b)*c", //all main effects and pairwise interactions between c and a or b (expands to: a + b + c + a:c + b:c)
   "a + b + c + a:c + b:c",
   "0 + a", //0 suppresses the intercept resulting in a model that has one parameter per level of a (identical to: a - 1)
-  "a - 1", // random intercepts for each unique level of s and for each unique level of i
+  "a - 1", 
   "(1|s)", //random intercepts for unique level of the factor s
-  "(1|s) + (1|i)",  
+  "(1|s) + (1|i)",  // random intercepts for each unique level of s and for each unique level of i
   "(1|s/i)",/*random intercepts for factor s and i, 
             where the random effects for i are nested in s. */
   "(1|s) + (1|s:i)",// expands to this, example: `s` refer to schools, and i to classrooms within

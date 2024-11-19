@@ -6,18 +6,20 @@ import {ParseTreeListener} from "antlr4";
 import { FormulaContext } from "./LME4Parser.js";
 import { ExpressionContext } from "./LME4Parser.js";
 import { TermsContext } from "./LME4Parser.js";
+import { OperatorContext } from "./LME4Parser.js";
+import { TerminatorContext } from "./LME4Parser.js";
 import { TermContext } from "./LME4Parser.js";
 import { FixedEffectContext } from "./LME4Parser.js";
 import { FunctionContext } from "./LME4Parser.js";
 import { FunctionArgsContext } from "./LME4Parser.js";
-import { RandomEffectContext } from "./LME4Parser.js";
-import { UncorrelatedRandomEffectContext } from "./LME4Parser.js";
-import { RandomTermsContext } from "./LME4Parser.js";
-import { RandomTermContext } from "./LME4Parser.js";
-import { GroupingFactorContext } from "./LME4Parser.js";
 import { InteractionContext } from "./LME4Parser.js";
+import { MultiTermContext } from "./LME4Parser.js";
+import { RandomEffectContext } from "./LME4Parser.js";
+import { RandomTermContext } from "./LME4Parser.js";
+import { RandomSlopeContext } from "./LME4Parser.js";
+import { NestedGroupsContext } from "./LME4Parser.js";
 import { InterceptContext } from "./LME4Parser.js";
-import { OffsetContext } from "./LME4Parser.js";
+import { NestedTermContext } from "./LME4Parser.js";
 
 
 /**
@@ -55,6 +57,26 @@ export default class LME4Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitTerms?: (ctx: TermsContext) => void;
+	/**
+	 * Enter a parse tree produced by `LME4Parser.operator`.
+	 * @param ctx the parse tree
+	 */
+	enterOperator?: (ctx: OperatorContext) => void;
+	/**
+	 * Exit a parse tree produced by `LME4Parser.operator`.
+	 * @param ctx the parse tree
+	 */
+	exitOperator?: (ctx: OperatorContext) => void;
+	/**
+	 * Enter a parse tree produced by `LME4Parser.terminator`.
+	 * @param ctx the parse tree
+	 */
+	enterTerminator?: (ctx: TerminatorContext) => void;
+	/**
+	 * Exit a parse tree produced by `LME4Parser.terminator`.
+	 * @param ctx the parse tree
+	 */
+	exitTerminator?: (ctx: TerminatorContext) => void;
 	/**
 	 * Enter a parse tree produced by `LME4Parser.term`.
 	 * @param ctx the parse tree
@@ -96,6 +118,26 @@ export default class LME4Listener extends ParseTreeListener {
 	 */
 	exitFunctionArgs?: (ctx: FunctionArgsContext) => void;
 	/**
+	 * Enter a parse tree produced by `LME4Parser.interaction`.
+	 * @param ctx the parse tree
+	 */
+	enterInteraction?: (ctx: InteractionContext) => void;
+	/**
+	 * Exit a parse tree produced by `LME4Parser.interaction`.
+	 * @param ctx the parse tree
+	 */
+	exitInteraction?: (ctx: InteractionContext) => void;
+	/**
+	 * Enter a parse tree produced by `LME4Parser.multiTerm`.
+	 * @param ctx the parse tree
+	 */
+	enterMultiTerm?: (ctx: MultiTermContext) => void;
+	/**
+	 * Exit a parse tree produced by `LME4Parser.multiTerm`.
+	 * @param ctx the parse tree
+	 */
+	exitMultiTerm?: (ctx: MultiTermContext) => void;
+	/**
 	 * Enter a parse tree produced by `LME4Parser.randomEffect`.
 	 * @param ctx the parse tree
 	 */
@@ -105,26 +147,6 @@ export default class LME4Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitRandomEffect?: (ctx: RandomEffectContext) => void;
-	/**
-	 * Enter a parse tree produced by `LME4Parser.uncorrelatedRandomEffect`.
-	 * @param ctx the parse tree
-	 */
-	enterUncorrelatedRandomEffect?: (ctx: UncorrelatedRandomEffectContext) => void;
-	/**
-	 * Exit a parse tree produced by `LME4Parser.uncorrelatedRandomEffect`.
-	 * @param ctx the parse tree
-	 */
-	exitUncorrelatedRandomEffect?: (ctx: UncorrelatedRandomEffectContext) => void;
-	/**
-	 * Enter a parse tree produced by `LME4Parser.randomTerms`.
-	 * @param ctx the parse tree
-	 */
-	enterRandomTerms?: (ctx: RandomTermsContext) => void;
-	/**
-	 * Exit a parse tree produced by `LME4Parser.randomTerms`.
-	 * @param ctx the parse tree
-	 */
-	exitRandomTerms?: (ctx: RandomTermsContext) => void;
 	/**
 	 * Enter a parse tree produced by `LME4Parser.randomTerm`.
 	 * @param ctx the parse tree
@@ -136,25 +158,25 @@ export default class LME4Listener extends ParseTreeListener {
 	 */
 	exitRandomTerm?: (ctx: RandomTermContext) => void;
 	/**
-	 * Enter a parse tree produced by `LME4Parser.groupingFactor`.
+	 * Enter a parse tree produced by `LME4Parser.randomSlope`.
 	 * @param ctx the parse tree
 	 */
-	enterGroupingFactor?: (ctx: GroupingFactorContext) => void;
+	enterRandomSlope?: (ctx: RandomSlopeContext) => void;
 	/**
-	 * Exit a parse tree produced by `LME4Parser.groupingFactor`.
+	 * Exit a parse tree produced by `LME4Parser.randomSlope`.
 	 * @param ctx the parse tree
 	 */
-	exitGroupingFactor?: (ctx: GroupingFactorContext) => void;
+	exitRandomSlope?: (ctx: RandomSlopeContext) => void;
 	/**
-	 * Enter a parse tree produced by `LME4Parser.interaction`.
+	 * Enter a parse tree produced by `LME4Parser.nestedGroups`.
 	 * @param ctx the parse tree
 	 */
-	enterInteraction?: (ctx: InteractionContext) => void;
+	enterNestedGroups?: (ctx: NestedGroupsContext) => void;
 	/**
-	 * Exit a parse tree produced by `LME4Parser.interaction`.
+	 * Exit a parse tree produced by `LME4Parser.nestedGroups`.
 	 * @param ctx the parse tree
 	 */
-	exitInteraction?: (ctx: InteractionContext) => void;
+	exitNestedGroups?: (ctx: NestedGroupsContext) => void;
 	/**
 	 * Enter a parse tree produced by `LME4Parser.intercept`.
 	 * @param ctx the parse tree
@@ -166,14 +188,14 @@ export default class LME4Listener extends ParseTreeListener {
 	 */
 	exitIntercept?: (ctx: InterceptContext) => void;
 	/**
-	 * Enter a parse tree produced by `LME4Parser.offset`.
+	 * Enter a parse tree produced by `LME4Parser.nestedTerm`.
 	 * @param ctx the parse tree
 	 */
-	enterOffset?: (ctx: OffsetContext) => void;
+	enterNestedTerm?: (ctx: NestedTermContext) => void;
 	/**
-	 * Exit a parse tree produced by `LME4Parser.offset`.
+	 * Exit a parse tree produced by `LME4Parser.nestedTerm`.
 	 * @param ctx the parse tree
 	 */
-	exitOffset?: (ctx: OffsetContext) => void;
+	exitNestedTerm?: (ctx: NestedTermContext) => void;
 }
 
